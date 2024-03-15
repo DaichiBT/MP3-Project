@@ -7,8 +7,8 @@ public class GameUI extends JPanel implements Runnable {
     private final int initialTileSize = 32;
     private final int scaleValue = 3;
     private final int tileSize = initialTileSize * scaleValue; // 96
-    private final int maxScreenCol = 16;
-    private final int maxScreenRow = 12;
+    private final int maxScreenCol = 20;
+    private final int maxScreenRow = 11;
     private final int screenWidth = tileSize * maxScreenCol; // 768
     private final int screenHeight = tileSize * maxScreenRow; // 576
     private final int FPS = 60;

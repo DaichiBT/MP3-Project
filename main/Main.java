@@ -3,7 +3,7 @@ import javax.swing.JFrame;
 public class Main {
     public static void main(String[] args) {
         JFrame frame = new JFrame();
-        frame.setTitle("Pixel Monster");
+        frame.setTitle("");
 
         GameUI gameUI = new GameUI();
         System.out.println(gameUI);
