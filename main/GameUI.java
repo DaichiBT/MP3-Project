@@ -1,5 +1,7 @@
 package main;
 
+import entity.Player;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -15,6 +17,7 @@ public class GameUI extends JPanel implements Runnable {
     Thread gameThread;
     KeyHandler keyHandle = new KeyHandler();
 
+    Player player = new Player(this);
     Sound music = new Sound();
     Sound sfx = new Sound();
 
@@ -86,6 +89,8 @@ public class GameUI extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g;
+
+        player.draw(g2);
 
         g2.dispose();
     }
