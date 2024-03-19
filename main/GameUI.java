@@ -27,7 +27,7 @@ public class GameUI {
         window.setResizable(false);
         window.setLayout(null);
 
-        messageText = new JTextArea("THIS IS SAMPLE TEXT");
+        messageText = new JTextArea("");
         messageText.setBounds(50,700,1800,300);
         messageText.setBackground(Color.red);
         messageText.setForeground(Color.white);
@@ -48,10 +48,10 @@ public class GameUI {
         bgLabel[1] = new JLabel();
         bgLabel[1].setBounds(0, 0, 700, 350);
 
-//        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("pathFile.png"));
-//        bgLabel[1].setIcon(bgIcon);
-//
-//        bgPanel[1].add(bgLabel[1]);
+        ImageIcon bgImg = new ImageIcon(getClass().getClassLoader().getResource("/res/test.png"));
+        bgLabel[1].setIcon(bgImg);
+
+        bgPanel[1].add(bgLabel[1]);
     }
 
 }
