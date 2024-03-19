@@ -1,112 +1,57 @@
 package main;
 
-import entity.Player;
-
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
-public class GameUI extends JPanel implements Runnable {
-    private final int initialTileSize = 32;
-    private final int scaleValue = 3;
-    private final int tileSize = initialTileSize * scaleValue; // 96
-    private final int maxScreenCol = 20;
-    private final int maxScreenRow = 11;
-    private final int screenWidth = tileSize * maxScreenCol; // 768
-    private final int screenHeight = tileSize * maxScreenRow; // 576
-    private final int FPS = 60;
-    Thread gameThread;
-    KeyHandler keyHandle = new KeyHandler();
+public class GameUI {
+    MainGame game;
+    JFrame window;
+    public JTextArea messageText;
+    public JPanel[] bgPanel = new JPanel[20];
+    public JLabel[] bgLabel = new JLabel[20];
 
-    Player player = new Player(this);
-    Sound music = new Sound();
-    Sound sfx = new Sound();
+    public GameUI(MainGame game) {
+        this.game = game;
 
-    public GameUI() {
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.black);
-        this.setDoubleBuffered(true);
-        this.addKeyListener(keyHandle);
-        this.setFocusable(true);
-    }
-    public void startGameThread() {
-        gameThread = new Thread(this);
-        gameThread.start();
-    }
-    public int getTileSize() {
-        return tileSize;
-    }
-    public int getMaxScreenCol() {
-        return maxScreenCol;
-    }
-    public int getMaxScreenRow() {
-        return maxScreenRow;
-    }
-    public int getScreenWidth() {
-        return screenWidth;
-    }
-    public int getScreenHeight() {
-        return screenHeight;
-    }
-    public int getMaxWorldCol() {
-        return 50;
-    }
-    public int getMaxWorldRow() {
-        return 50;
-    }
-    @Override
+        createGameFrame();
+        createBackground();
 
-    public void run() {
-        double drawInterval = 1000/FPS;
-        double delta = 0;
-        long lastTime = System.currentTimeMillis();
-        long currentTime;
-        long timer = 0;
-        int drawCount = 0;
+        window.setVisible(true);
+    }
 
-        while(gameThread != null) {
-            currentTime = System.currentTimeMillis();
-            delta += (currentTime - lastTime) / drawInterval;
-            timer += (currentTime - lastTime);
-            lastTime = currentTime;
+    public void createGameFrame() {
+        window = new JFrame();
+        window.setSize(1920, 1080);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.getContentPane().setBackground(Color.black);
+        window.setResizable(false);
+        window.setLayout(null);
 
-            if (delta >= 1) {
-                update();
-                repaint();
-                delta--;
-                drawCount++;
-            }
+        messageText = new JTextArea("THIS IS SAMPLE TEXT");
+        messageText.setBounds(50,700,1800,300);
+        messageText.setBackground(Color.red);
+        messageText.setForeground(Color.white);
+        messageText.setEditable(false);
+        messageText.setLineWrap(true);
+        messageText.setWrapStyleWord(true);
+        messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 36));
+        window.add(messageText);
+    }
 
-            if (timer >= 1000) {
-                // System.out.println("FPS: " + drawCount);
-                drawCount = 0;
-                timer = 0;
-            }
-        }
-    }
-    public void update() {
+    public void createBackground() {
+        bgPanel[1] = new JPanel();
+        bgPanel[1].setBounds(50,50,1800,650);
+        bgPanel[1].setBackground(Color.blue);
+        bgPanel[1].setLayout(null);
+        window.add(bgPanel[1]);
 
-    }
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2 = (Graphics2D)g;
+        bgLabel[1] = new JLabel();
+        bgLabel[1].setBounds(0, 0, 700, 350);
 
-        player.draw(g2);
+//        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("pathFile.png"));
+//        bgLabel[1].setIcon(bgIcon);
+//
+//        bgPanel[1].add(bgLabel[1]);
+    }
 
-        g2.dispose();
-    }
-    public void playMusic(int i) {
-        music.setFile(i);
-        music.play();
-        music.loop();
-    }
-    public void stopMusic() {
-        music.stop();
-    }
-    public void playSFX(int i) {
-        sfx.setFile(i);
-        sfx.play();
-    }
-    public String toString() {
-        return FPS + "";
-    }
 }
