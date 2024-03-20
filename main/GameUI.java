@@ -51,7 +51,7 @@ public class GameUI {
         bgLabel[1] = new JLabel();
         bgLabel[1].setBounds(0, 0, 1800, 650);
 
-        ImageIcon bgImg = new ImageIcon(getClass().getClassLoader().getResource("MainMenuBG.png"));
+        ImageIcon bgImg = new ImageIcon(getClass().getClassLoader().getResource("KitchenSceneBG.png"));
         Image image = bgImg.getImage().getScaledInstance(1800, 650, Image.SCALE_DEFAULT);
 
         bgImg = new ImageIcon(image);
@@ -71,7 +71,7 @@ public class GameUI {
 
         objectLabel.setIcon(objectIcon);
 
-        bgPanel[1].add(objectLabel);
+//        bgPanel[1].add(objectLabel);
         bgPanel[1].add(bgLabel[1]);
 
     }
