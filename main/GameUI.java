@@ -1,5 +1,6 @@
 package main;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,6 +16,7 @@ public class GameUI {
 
         createGameFrame();
         createBackground();
+        createObject();
 
         window.setVisible(true);
     }
@@ -29,6 +31,7 @@ public class GameUI {
 
         messageText = new JTextArea("");
         messageText.setBounds(50,700,1800,300);
+
         messageText.setBackground(Color.red);
         messageText.setForeground(Color.white);
         messageText.setEditable(false);
@@ -46,12 +49,30 @@ public class GameUI {
         window.add(bgPanel[1]);
 
         bgLabel[1] = new JLabel();
-        bgLabel[1].setBounds(0, 0, 700, 350);
+        bgLabel[1].setBounds(0, 0, 1800, 650);
 
-        ImageIcon bgImg = new ImageIcon(getClass().getClassLoader().getResource("/res/test.png"));
+        ImageIcon bgImg = new ImageIcon(getClass().getClassLoader().getResource("MainMenuBG.png"));
+        Image image = bgImg.getImage().getScaledInstance(1800, 650, Image.SCALE_DEFAULT);
+
+        bgImg = new ImageIcon(image);
+
         bgLabel[1].setIcon(bgImg);
 
-        bgPanel[1].add(bgLabel[1]);
-    }
 
+    }
+    public void createObject() {
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(300,50,320,320);
+
+        ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource("level-up.png"));
+        Image image = objectIcon.getImage().getScaledInstance(320,320, Image.SCALE_DEFAULT);
+
+        objectIcon = new ImageIcon(image);
+
+        objectLabel.setIcon(objectIcon);
+
+        bgPanel[1].add(objectLabel);
+        bgPanel[1].add(bgLabel[1]);
+
+    }
 }
