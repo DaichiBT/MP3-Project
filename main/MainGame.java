@@ -1,8 +1,14 @@
 package main;
-import javax.swing.JFrame;
+import Event.Event01;
+
+import javax.swing.*;
+
 public class MainGame {
 
-    GameUI gameUI = new GameUI(this);
+    ActionHandler actionHandler = new ActionHandler(this);
+    public GameUI gameUI = new GameUI(this);
+
+    public Event01 event01 = new Event01(this);
     public static void main(String[] args) {
 
         new MainGame();
