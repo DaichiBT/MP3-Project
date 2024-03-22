@@ -13,8 +13,8 @@ public class ActionHandler implements ActionListener {
         String playerChoice = e.getActionCommand();
 
         switch(playerChoice) {
-            case "EAT UTIL": game.event01.eatUtil(); break;
-            case "WHINE UTIL": game.event01.shineUtil(); break;
+            case "takePhotoAlbum": game.event01.takePhotoAlbum(); game.sceneTransition.showPhotoAlbum(); break;
+            case "goPhotoAlbumPage2": game.sceneTransition.showPhotoAlbum2(); break;
 
             case "boyTalk": game.event01.boyTalk(); break;
             case "boyStare": game.event01.boyStare(); break;

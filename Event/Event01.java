@@ -10,20 +10,19 @@ public class Event01 {
     }
 
     // Add Action Command Methods
-    public void eatUtil() {
-        game.gameUI.messageText.setText("OM NOM O NO M ONONM MO ODNMAO DNO M NOM NOM NOMONOM OM O NWAAAAAAAAAAAAAAAAAAAAAAAA O OM OM");
+    public void takePhotoAlbum() {
+        game.gameUI.messageText.setText("You take a peek at the photo album");
     }
 
-    public void shineUtil() {
-        game.gameUI.messageText.setText("SHINING LIKE A DIAMOND");
-    }
+
 
     public void boyTalk() {
-        game.gameUI.messageText.setText("Hey, what are you doing here?");
+        game.gameUI.messageText.setText("Hey, what are you doing here?\n\nMy name is Tommy and I live here alone...");
     }
 
     public void boyStare() {
-        game.gameUI.messageText.setText("You proceed to stare at the boy...\n\n\n'WHAT ARE YOU LOOKING AT'");
+        game.gameUI.messageText.setText("You proceed to stare at the boy...\n\n\"WHAT ARE YOU LOOKING AT\"\n\nHow rude of him...");
     }
+
 
 }

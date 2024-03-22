@@ -173,8 +173,22 @@ public class GameUI {
         // Scene 1
         createBackground(1, "Scene1/BGScene1.png");
         createObject(1, 650,200,250,375,"Scene1/BoyLookingAway500x750.png", "TALK", "STARE", "IGNORE", "boyTalk", "boyStare", "boyIgnore");
+        createObject(1, 1050,320,400,250,"Util/invisibleHitbox.png", "TAKE PHOTO ALBUM", "TAKE NOTEBOOK", "IGNORE", "takePhotoAlbum", "takeNotebook", "cabIgnore");
         createArrow(1, 0, 275, 100, 100, "Util/arrowLeft.png", "goScene2");
         bgPanel[1].add(bgLabel[1]);
+
+        // Photo Album
+        createBackground(3, "Scene1/photoAlbum.png");
+        createArrow(3, 1700,0, 100,100,"Util/bigX.png", "goScene1");
+        createArrow(3, 0, 275, 100, 100, "Util/arrowLeft.png", "goPhotoAlbumPage2");
+        bgPanel[3].add(bgLabel[3]);
+
+        // Photo Album Page 2
+        createBackground(4, "Scene1/photoAlbum1.png");
+        createArrow(4, 1700,0, 100,100,"Util/bigX.png", "goScene1");
+        createArrow(4, 1700, 275, 100, 100, "Util/arrowRight.png", "takePhotoAlbum");
+        bgPanel[4].add(bgLabel[4]);
+
 
         // Scene 2
         createBackground(2, "Scene2/KitchenSceneBG.png");
