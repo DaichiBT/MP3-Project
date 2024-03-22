@@ -15,7 +15,14 @@ public class ActionHandler implements ActionListener {
         switch(playerChoice) {
             case "EAT UTIL": game.event01.eatUtil(); break;
             case "WHINE UTIL": game.event01.shineUtil(); break;
-            case "SHINE UTIL": break;
+
+            case "boyTalk": game.event01.boyTalk(); break;
+            case "boyStare": game.event01.boyStare(); break;
+
+
+            // Scene Transition Handling
+            case "goScene1": game.sceneTransition.showScene1(); break;
+            case "goScene2": game.sceneTransition.showScene2(); break;
         }
     }
 }

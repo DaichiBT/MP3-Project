@@ -18,4 +18,12 @@ public class Event01 {
         game.gameUI.messageText.setText("SHINING LIKE A DIAMOND");
     }
 
+    public void boyTalk() {
+        game.gameUI.messageText.setText("Hey, what are you doing here?");
+    }
+
+    public void boyStare() {
+        game.gameUI.messageText.setText("You proceed to stare at the boy...\n\n\n'WHAT ARE YOU LOOKING AT'");
+    }
+
 }
