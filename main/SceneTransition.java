@@ -9,37 +9,43 @@ public class SceneTransition {
     }
 
     public void showMainMenu() {
-        game.gameUI.bgPanel[0].setVisible(true);
-        setFalseVisible(1, 4);
-        game.gameUI.messageText.setText("Welcome to FUCK ME MAN");
+        hideOtherScene(0,0);
+        game.gameUI.messageText.setText("Welcome to Resolve");
+    }
+    public void showStorySelect() {
+        hideOtherScene(0, 1);
+        game.gameUI.messageText.setText("Please Select a Story to Play");
     }
     public void showScene1() {
-        game.gameUI.bgPanel[1].setVisible(true);
+        hideOtherScene(1,0);
 
-        setFalseVisible(0, 1);
-        setFalseVisible(2, 5);
         game.gameUI.messageText.setText("What an empty room...");
     }
     public void showScene2() {
-        game.gameUI.bgPanel[1].setVisible(false);
-        game.gameUI.bgPanel[2].setVisible(true);
-        game.gameUI.messageText.setText("Why's there so much kitchen appliances?");
+        hideOtherScene(2, 0);
+        game.gameUI.messageText.setText("Why's there so much kitchen appliances?\n\nThis must be where Tommy's family lived...");
     }
 
     public void showPhotoAlbum() {
-        setFalseVisible(0, 3);
-        setFalseVisible(4, 5);
-        game.gameUI.bgPanel[3].setVisible(true);
+        hideOtherScene(1, 1);
     }
 
     public void showPhotoAlbum2() {
-        setFalseVisible(0,4);
-        game.gameUI.bgPanel[4].setVisible(true);
+        hideOtherScene(1, 2);
     }
 
-    public void setFalseVisible(int start, int end) {
-        for (int i = start; i < end; i++) {
-            game.gameUI.bgPanel[i].setVisible(false);
+    public void showPhotoAlbum3() {
+        hideOtherScene(1, 3);
+    }
+
+    public void hideOtherScene(int exclusionRow, int exclusionCol) {
+        for (int row = 0; row < game.gameUI.getRowLength(); row++) {
+            for (int col = 0; col < game.gameUI.getColLength(); col++) {
+                if (game.gameUI.bgPanel[row][col] != null) {
+                    game.gameUI.bgPanel[row][col].setVisible(false);
+                }
+            }
         }
+        game.gameUI.bgPanel[exclusionRow][exclusionCol].setVisible(true);
     }
 }
