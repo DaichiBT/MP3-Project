@@ -61,7 +61,7 @@ public class Event01 {
 
     public void liftKnife() {
         if (game.playerFamily.getTommyTalkCounter() >= 3) {
-            game.gameUI.messageText.setText("You lift the knife and find a hidden note underneath...\n\nThis must be what he's talking about, time to bring it back to him\n\n");
+            game.gameUI.messageText.setText("You lift the knife and find a hidden note underneath...\n\nThis must be what he's talking about, time to bring it back to him");
             game.playerFamily.setKnifeLifted(true);
         } else {
             game.gameUI.messageText.setText("You lift the knife and find a hidden note underneath...\n\nI wonder what this can be used for...");

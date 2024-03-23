@@ -49,7 +49,7 @@ public class GameUI {
     public void createBackground(int bgNum, int sceneNum, String bgFilePath) {
         bgPanel[bgNum][sceneNum] = new JPanel();
         bgPanel[bgNum][sceneNum].setBounds(50,50,1800,650);
-        bgPanel[bgNum][sceneNum].setBackground(Color.blue);
+        bgPanel[bgNum][sceneNum].setBackground(Color.white);
         bgPanel[bgNum][sceneNum].setLayout(null);
         window.add(bgPanel[bgNum][sceneNum]);
 

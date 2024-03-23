@@ -16,7 +16,6 @@ public class MainGame {
 
         new MainGame();
 
-
     }
     public MainGame() {
         sceneTransition.showMainMenu();
