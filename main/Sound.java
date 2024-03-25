@@ -6,16 +6,15 @@ import java.net.URL;
 
 public class Sound {
     Clip clip;
-    URL[] soundURL = new URL[30];
 
     public Sound() {
         //soundURL[0] = getClass().getResource(insertFileDirectory);
 
     }
 
-    public void setFile(int i) {
+    public void setFile(URL name) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(name);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
         } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
@@ -23,7 +22,8 @@ public class Sound {
         }
     }
 
-    public void play() {
+    public void play(URL name) {
+        clip.setFramePosition(0);
         clip.start();
     }
 

@@ -1,6 +1,8 @@
 package main;
 
 
+import Entity.PlayerFamily;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -8,6 +10,7 @@ import java.awt.event.MouseListener;
 
 public class GameUI {
     MainGame game;
+    PlayerFamily playerFamily;
     JFrame window;
 
     public JTextArea messageText;
@@ -16,8 +19,9 @@ public class GameUI {
 
     Font sansSerifButton = new Font("SansSerif", Font.BOLD, 20);
 
-    public GameUI(MainGame game) {
+    public GameUI(MainGame game, PlayerFamily playerFamily) {
         this.game = game;
+        this.playerFamily = playerFamily;
 
         createGameFrame();
         buildScreen();
@@ -223,19 +227,21 @@ public class GameUI {
 
     public void buildScreen() {
         // Main Menu
-        createBackground(0, 0,"MainMenuBG.png");
-        createArrow(0,0,20,0,500,350,"Util/StartButton.png", "goScene1");
+        createBackground(0, 0, "Scene0/MainMenuBG.png");
+        createArrow(0,0,20,0,500,350,"Util/StartButton.png", "goStorySelect");
         bgPanel[0][0].add(bgLabel[0][0]);
 
         // Story Select Screen
-        createBackground(0, 1, "storySelectScreen.png");
+        createBackground(0, 1, "Scene0/storySelectScreen.png");
+        createArrow(0, 1, 0, 0, 900, 650, "Util/invisibleHitbox.png", "goScene1First");
+        createArrow(0, 1, 900, 0, 900, 650, "Util/invisibleHitbox.png", "goLoveStory");
         bgPanel[0][1].add(bgLabel[0][1]);
 
 
         // Scene 1
         createBackground(1, 0,"Scene1/BGScene1.png");
         createObject(1, 0,650,200,250,375,"Scene1/BoyLookingAway500x750.png", "TALK", "STARE", "IGNORE", "boyTalk", "boyStare", "boyIgnore");
-        createObject(1, 0,1050,320,400,250,"Util/invisibleHitbox.png", "TAKE PHOTO ALBUM", "TAKE NOTEBOOK", "IGNORE", "takePhotoAlbum", "takeNotebook", "cabIgnore");
+        createObjectOne(1, 0,1050,320,400,250,"Util/invisibleHitbox.png", "TAKE PHOTO ALBUM", "takePhotoAlbum");
         createArrow(1, 0, 0,275, 100, 100, "Util/arrowLeft.png", "goScene2");
         bgPanel[1][0].add(bgLabel[1][0]);
 
@@ -253,19 +259,101 @@ public class GameUI {
         bgPanel[1][2].add(bgLabel[1][2]);
 
         // Photo Album Page 3
-        createBackground(1, 3, "familyPhoto.png");
-        createObjectOne(1, 3, 300, 400, 342, 500, "ghost.png", "QUESTION", "ghostQuestion");
+        createBackground(1, 3, "Scene1/photoAlbum2.png");
+        createObjectOne(1, 3, 300, 400, 342, 500, "Scene1/ghost.png", "QUESTION", "ghostQuestion");
         createArrow(1, 3, 1700,0, 100,100,"Util/bigX.png", "goScene1");
         createArrow(1, 3, 1700, 275, 100, 100, "Util/arrowRight.png", "goPhotoAlbumPage2");
-
+        createArrow(1, 3, 0, 275, 100, 100, "Util/arrowLeft.png", "goPhotoAlbumPage4");
         bgPanel[1][3].add(bgLabel[1][3]);
 
-
+        // Photo Album Hidden Page 4
+        createBackground(1, 4, "Scene1/photoAlbum3.png");
+        createObjectOne(1, 4, 0, 0, 1800, 650, "Util/invisibleHitbox.png", "ENTER FLOWER FIELD", "goFlowerField");
+        bgPanel[1][4].add(bgLabel[1][4]);
 
         // Scene 2
         createBackground(2, 0, "Scene2/KitchenSceneBG.png");
         createObject(2, 0,650,350,670,125, "Util/invisibleHitbox.png", "LIFT", "GRAB", "SHARPEN", "liftKnife", "grabKnife", "sharpenKnife");
         createArrow(2, 0,1700, 275, 100, 100, "Util/arrowRight.png", "goScene1");
+        createArrow(2, 0, 0, 275, 100, 100, "Util/arrowLeft.png", "goScene3");
         bgPanel[2][0].add(bgLabel[2][0]);
+
+        // Scene 3
+        createBackground(3, 0, "Scene3/RoomBG.png");
+        createObject(3, 0, 1000, 450, 57, 83, "Scene3/PaperBag.png", "INSPECT", "GRAB", "IGNORE", "inspectBag", "grabBag", "ignoreBag");
+        createArrow(3, 0,1700, 275, 100, 100, "Util/arrowRight.png", "goScene2");
+        createArrow(3, 0, 0, 275, 100, 100, "Util/arrowLeft.png", "goScene4");
+        bgPanel[3][0].add(bgLabel[3][0]);
+
+        // Scene 4
+        createBackground(4, 0, "Scene4/tombStone.png");
+        createObjectOne(4, 0, 470, 30, 250, 570, "Util/invisibleHitbox.png", "INSPECT", "inspectTombOne");
+        createObjectOne(4, 0, 750, 70, 240, 510, "Util/invisibleHitbox.png", "INSPECT", "inspectTombTwo");
+        createObjectOne(4, 0, 1050, 30, 290, 570, "Util/invisibleHitbox.png", "INSPECT", "inspectTombThree");
+        createArrow(4, 0,1700, 275, 100, 100, "Util/arrowRight.png", "goScene3");
+        bgPanel[4][0].add(bgLabel[4][0]);
+
+        // Scene 5
+        createBackground(5, 0, "Scene5/Scene5.png");
+        createObjectOne(5, 0, 1050, 200, 150, 300, "Util/invisibleHitbox.png", "THE END", "endGameMode");
+        bgPanel[5][0].add(bgLabel[5][0]);
+
+        // Love Story
+        // Scene 1
+        createBackground(6, 0, "LoveSim/Scenario1.png");
+        createObject(6, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "Yea I am!", "Who are you?", "Yes, you're from my Math Class right?", "choice1of1", "choice1of2", "choice1of3");
+        bgPanel[6][0].add(bgLabel[6][0]);
+
+        createBackground(6, 1, "LoveSim/Scenario1.png");
+        createArrow(6, 1, 650, 200, 500, 250, "Util/ContinueButton.png", "goScenario2");
+        bgPanel[6][1].add(bgLabel[6][1]);
+
+        createBackground(7, 0, "LoveSim/Scenario2.png");
+        createObject(7, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "I love League of Legends!", "What is that?", "No.", "choice2of1", "choice2of2", "choice2of3");
+        bgPanel[7][0].add(bgLabel[7][0]);
+
+        createBackground(7, 1, "LoveSim/Scenario2.png");
+        createArrow(7, 1, 650, 200, 500, 250, "Util/ContinueButton.png", "goScenario3");
+        bgPanel[7][1].add(bgLabel[7][1]);
+
+        createBackground(8, 0, "LoveSim/Scenario3.png");
+        createObject(8, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "Country Road by John Denver", "I don't listen to music", "Happy Together by The Turtles", "choice3of1", "choice3of2", "choice3of3");
+        bgPanel[8][0].add(bgLabel[8][0]);
+
+        createBackground(8, 1, "LoveSim/Scenario3.png");
+        createArrow(8, 1, 650, 200, 500, 250, "Util/ContinueButton.png", "goScenario4");
+        bgPanel[8][1].add(bgLabel[8][1]);
+
+        createBackground(9, 0, "LoveSim/Scenario4.png");
+        createObject(9, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "McDonalds", "Aquarium", "Let's just play games from home...", "choice4of1", "choice4of2", "choice4of3");
+        bgPanel[9][0].add(bgLabel[9][0]);
+
+        createBackground(9, 1, "LoveSim/Scenario4.png");
+        createArrow(9, 1, 650, 200, 500, 250, "Util/ContinueButton.png", "goScenario5");
+        bgPanel[9][1].add(bgLabel[9][1]);
+
+        createBackground(10, 0, "LoveSim/Scenario5.png");
+        createObject(10, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "It takes two", "Overwatch 2", "Phasmophobia", "choice5of1", "choice5of2", "choice5of3");
+        bgPanel[10][0].add(bgLabel[10][0]);
+
+        createBackground(10, 1, "LoveSim/Scenario5.png");
+        createArrow(10, 1, 650, 200, 500, 250, "Util/ContinueButton.png", "goScenario6");
+        bgPanel[10][1].add(bgLabel[10][1]);
+
+        createBackground(11, 0, "LoveSim/Scenario6.png");
+        createObject(11, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "I'll order Pizza", "I'll cook something", "Wait, I'm in a middle of a Valorant game", "choice6of1", "choice6of2", "choice6of3");
+        bgPanel[11][0].add(bgLabel[11][0]);
+
+        createBackground(11, 1, "LoveSim/Scenario6.png");
+        createArrow(11, 1, 650, 200, 500, 250, "Util/ContinueButton.png", "goScenario7");
+        bgPanel[11][1].add(bgLabel[11][1]);
+
+        createBackground(12, 0, "LoveSim/Scenario7.png");
+        createObject(12, 0, 500, 300, 800, 250, "Util/invisibleHitbox.png", "Our Anniversary!", "Your Birthday!", "Monday", "choice7of1", "choice7of2", "choice7of3");
+        bgPanel[12][0].add(bgLabel[12][0]);
+
+        createBackground(12, 1, "LoveSim/Scenario7.png");
+        createArrow(12, 1, 650, 200, 500, 250, "LoveSim/TheEnd.png", "endGameMode");
+        bgPanel[12][1].add(bgLabel[12][1]);
     }
 }
