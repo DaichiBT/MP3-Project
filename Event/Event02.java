@@ -30,16 +30,16 @@ public class Event02 {
     }
 
     public void choice3of1() {
-        game.stopMusic(game.loveModeTheme);
-        game.playMusic(game.countryRoad);
+        game.stopMusic(game.getLoveModeTheme());
+        game.playMusic(game.getCountryRoad());
         game.gameUI.messageText.setText("She loves this timeless classic!");
     }
     public void choice3of2() {
         game.gameUI.messageText.setText("She seems concerned for you...");
     }
     public void choice3of3() {
-        game.stopMusic(game.loveModeTheme);
-        game.playMusic(game.happyTogether);
+        game.stopMusic(game.getLoveModeTheme());
+        game.playMusic(game.getHappyTogether());
         game.gameUI.messageText.setText("She finds the song romantic and loves it!");
     }
 

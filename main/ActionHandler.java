@@ -36,10 +36,10 @@ public class ActionHandler implements ActionListener {
             case "inspectTombThree": game.event01.inspectTombThree(); break;
 
             // Scene Transition Handling
-            case "endGameMode": game.stopMusic(game.loveModeTheme); game.sceneTransition.showMainMenu(); break;
+            case "endGameMode": game.stopMusic(game.getLoveModeTheme()); game.sceneTransition.showMainMenu(); break;
             case "goMainMenu": game.sceneTransition.showMainMenu(); game.playerFamily.resetVars(); game.playerFamily.resetVars(); break;
             case "goStorySelect": game.sceneTransition.showStorySelect(); break;
-            case "goScene1First": game.sceneTransition.showScene1(); game.stopMusic(game.mainMenuTheme); game.playMusic(game.storyOneTheme); break;
+            case "goScene1First": game.sceneTransition.showScene1(); game.stopMusic(game.getMainMenuTheme()); game.playMusic(game.getStoryOneTheme()); break;
             case "goScene1": game.sceneTransition.showScene1(); break;
             case "goScene2": game.sceneTransition.showScene2(); break;
             case "goScene3": game.sceneTransition.showScene3(); break;

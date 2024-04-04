@@ -9,7 +9,7 @@ public class SceneTransition {
     }
 
     public void showMainMenu() {
-        game.playMusic(game.mainMenuTheme);
+        game.playMusic(game.getMainMenuTheme());
         hideOtherScene(0,0);
         game.gameUI.messageText.setText("Welcome to Resolve");
     }
@@ -62,8 +62,8 @@ public class SceneTransition {
 
     // Second Story
     public void showScene2of1() {
-        game.stopMusic(game.mainMenuTheme);
-        game.playMusic(game.loveModeTheme);
+        game.stopMusic(game.getMainMenuTheme());
+        game.playMusic(game.getLoveModeTheme());
         hideOtherScene(6, 0);
     }
     public void showScene2of2() {
@@ -82,8 +82,8 @@ public class SceneTransition {
         hideOtherScene(8, 1);
     }
     public void showScene5of1() {
-        game.stopMusic(game.happyTogether);
-        game.playMusic(game.loveModeTheme);
+        game.stopMusic(game.getHappyTogether());
+        game.playMusic(game.getLoveModeTheme());
         hideOtherScene(9, 0);
     }
     public void showScene5of2() {
@@ -117,6 +117,15 @@ public class SceneTransition {
             }
         }
         game.gameUI.bgPanel[exclusionRow][exclusionCol].setVisible(true);
+    }
+    public void colMajorOrder() {
+        int rows = game.gameUI.getRowLength();
+        int cols = game.gameUI.getColLength();
+        for (int j = 0; j < cols; j++) {
+            for (int i = 0; i < rows; i++) {
+                System.out.print(game.gameUI.bgPanel[i][j] + " ");
+            }
+        }
     }
     public int hideAllScene(int[][] arr) {
         for (int[] row : arr) {
